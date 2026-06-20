@@ -44,25 +44,37 @@ contexto que deben recordarse entre sesiones.
 - [x] Elegir paleta, tipografías y stack.
 - [x] Construir landing principal.
 - [x] Implementar carrito de compras.
-- [x] Implementar flujo de checkout (front).
-- [x] Conectar checkout a **WhatsApp** (botón abre wa.me con pedido + total).
-- [ ] **Poner el número real** en `WHATSAPP_NUMBER` (cart.js) — está vacío.
+- [x] Implementar flujo de checkout (formulario + WhatsApp + volver al inicio).
+- [x] Configurar `WHATSAPP_NUMBER` = `5493624009892` (Argentina).
+- [x] Reforzar responsive 100% (breakpoints tablet/móvil/móvil pequeño).
+- [x] Desplegar en producción (GitHub Pages + GitHub Actions).
 - [ ] Reemplazar imágenes SVG por fotos reales de cada producto.
 - [ ] Página de detalle de producto (PDP) individual.
 - [ ] Definir precios y stock reales.
 
-## Despliegue
+## Despliegue (ACTUAL)
 
-- **Producción**: https://rocio-sable.vercel.app/ (Vercel).
-- Nota: el sandbox de Claude Code bloquea `api.vercel.com` y `*.vercel.app`
-  por egress, así que el deploy/verificación se hace fuera de la sesión.
+- **Producción**: https://zeoex.github.io/Ro/ (GitHub Pages).
+- Deploy automático vía GitHub Actions (`.github/workflows/deploy-pages.yml`)
+  en cada push a `main`. Verificable desde la sesión por la API de GitHub.
+- Pages se activó manualmente una vez (Settings → Pages → Source: GitHub Actions).
+- Vercel (`rocio-sable.vercel.app`) quedó descartado: el sandbox bloquea
+  `api.vercel.com` y `*.vercel.app`, así que no se podía desplegar/verificar desde aquí.
+- Cache-busting: los assets usan `?v=N` en index.html (subir N en cada cambio).
+  GitHub Pages cachea el HTML ~10 min → para ver cambios al instante usar incógnito.
 
 ## Checkout WhatsApp
 
-- Constante `WHATSAPP_NUMBER` al inicio de `assets/js/cart.js` (vacía por defecto).
-- Formato: código de país sin "+", espacios ni guiones (ej. `549351XXXXXXX`).
-- El botón "Pedir por WhatsApp" arma un mensaje con productos, cantidades y total,
-  y abre `https://wa.me/<num>?text=...`. Si el número está vacío, avisa con un toast.
+- Constante `WHATSAPP_NUMBER` al inicio de `assets/js/cart.js`.
+- Flujo: "Finalizar compra" abre modal con datos del cliente → "Enviar pedido por
+  WhatsApp" arma el mensaje (productos, total, datos) y abre wa.me → vacía carrito
+  → vista de éxito → "Seguir comprando" cierra y sube al inicio.
+
+## Bugs resueltos (importante)
+
+- **Modal no cerraba**: `.modal { display: grid }` anulaba el atributo `hidden`.
+  Solución: regla `.modal[hidden] { display: none }` + cierre forzado con
+  `modal.style.display = "none"` en JS (estilo en línea, gana sobre todo).
 
 ## Notas
 
