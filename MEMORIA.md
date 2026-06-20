@@ -45,10 +45,24 @@ contexto que deben recordarse entre sesiones.
 - [x] Construir landing principal.
 - [x] Implementar carrito de compras.
 - [x] Implementar flujo de checkout (front).
+- [x] Conectar checkout a **WhatsApp** (botón abre wa.me con pedido + total).
+- [ ] **Poner el número real** en `WHATSAPP_NUMBER` (cart.js) — está vacío.
 - [ ] Reemplazar imágenes SVG por fotos reales de cada producto.
-- [ ] Conectar checkout a pasarela de pago / WhatsApp / backend real.
 - [ ] Página de detalle de producto (PDP) individual.
 - [ ] Definir precios y stock reales.
+
+## Despliegue
+
+- **Producción**: https://rocio-sable.vercel.app/ (Vercel).
+- Nota: el sandbox de Claude Code bloquea `api.vercel.com` y `*.vercel.app`
+  por egress, así que el deploy/verificación se hace fuera de la sesión.
+
+## Checkout WhatsApp
+
+- Constante `WHATSAPP_NUMBER` al inicio de `assets/js/cart.js` (vacía por defecto).
+- Formato: código de país sin "+", espacios ni guiones (ej. `549351XXXXXXX`).
+- El botón "Pedir por WhatsApp" arma un mensaje con productos, cantidades y total,
+  y abre `https://wa.me/<num>?text=...`. Si el número está vacío, avisa con un toast.
 
 ## Notas
 

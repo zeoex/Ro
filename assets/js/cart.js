@@ -6,6 +6,16 @@
 (function () {
   "use strict";
 
+  /* ============================================================
+     ⚙️  CONFIGURA AQUÍ TU WHATSAPP
+     Pon tu número con código de país, SIN "+", espacios ni guiones.
+     Ejemplos:  Argentina → "549351XXXXXXX"
+                Colombia  → "57300XXXXXXX"
+                México    → "521XXXXXXXXXX"
+     Déjalo vacío ("") y el botón solo avisará que falta configurarlo.
+     ============================================================ */
+  const WHATSAPP_NUMBER = "";
+
   const FREE_SHIPPING = 150000;
   const STORE_KEY = "ro_cart_v1";
   const fmt = (n) => "$" + n.toLocaleString("es-CO");
@@ -196,44 +206,37 @@
     if (e.target.tagName === "A") nav.classList.remove("is-open");
   });
 
-  /* ---------- Checkout ---------- */
-  const modal = document.getElementById("checkoutModal");
-  const checkoutTotal = document.getElementById("checkoutTotal");
-  const checkoutContent = document.getElementById("checkoutContent");
+  /* ---------- Checkout por WhatsApp ---------- */
+  function buildWhatsAppMessage() {
+    const lines = ["¡Hola RO! 🛍️ Quiero hacer este pedido:", ""];
+    Object.entries(cart).forEach(([id, qty]) => {
+      const p = getProduct(id);
+      if (!p) return;
+      lines.push(`• ${qty}x ${p.brand} — ${p.name}  (${fmt(p.price * qty)})`);
+    });
+    const subtotal = cartSubtotal();
+    lines.push("");
+    lines.push(`*Total: ${fmt(subtotal)}*`);
+    lines.push(subtotal >= FREE_SHIPPING ? "Incluye envío gratis 🎉" : "");
+    lines.push("");
+    lines.push("¿Me confirman disponibilidad y forma de pago? ¡Gracias!");
+    return lines.filter((l, i, a) => !(l === "" && a[i - 1] === "")).join("\n");
+  }
 
-  function openCheckout() {
+  checkoutBtn.addEventListener("click", () => {
     if (cartCount() === 0) return;
-    checkoutTotal.textContent = fmt(cartSubtotal());
-    modal.hidden = false;
-    document.body.style.overflow = "hidden";
-  }
-  function closeCheckout() {
-    modal.hidden = true;
-    document.body.style.overflow = "";
-  }
-  checkoutBtn.addEventListener("click", () => { closeCart(); openCheckout(); });
-  document.getElementById("checkoutClose").addEventListener("click", closeCheckout);
-  modal.addEventListener("click", (e) => { if (e.target === modal) closeCheckout(); });
 
-  document.getElementById("checkoutForm").addEventListener("submit", (e) => {
-    e.preventDefault();
-    const form = e.target;
-    if (!form.checkValidity()) { form.reportValidity(); return; }
-    const name = form.name.value.trim().split(" ")[0] || "";
-    const total = fmt(cartSubtotal());
-    // Limpiar carrito tras confirmar
-    cart = {};
-    saveCart();
-    updateUI();
-    checkoutContent.innerHTML = `
-      <div class="modal__success">
-        <span>✅</span>
-        <h2>¡Gracias${name ? ", " + name : ""}!</h2>
-        <p class="modal__sub">Tu pedido por <strong>${total}</strong> fue recibido.
-        Te contactaremos pronto para confirmar el envío y el pago.</p>
-        <button class="btn btn--primary" id="successClose">Seguir comprando</button>
-      </div>`;
-    document.getElementById("successClose").addEventListener("click", closeCheckout);
+    if (!WHATSAPP_NUMBER) {
+      showToast("⚠️ Falta configurar el número de WhatsApp (ver cart.js).");
+      return;
+    }
+
+    const text = encodeURIComponent(buildWhatsAppMessage());
+    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${text}`;
+    window.open(url, "_blank", "noopener");
+
+    closeCart();
+    showToast("Te llevamos a WhatsApp para confirmar tu pedido 💬");
   });
 
   /* ---------- Newsletter ---------- */
@@ -258,8 +261,7 @@
   /* ---------- Escape global ---------- */
   document.addEventListener("keydown", (e) => {
     if (e.key !== "Escape") return;
-    if (!modal.hidden) closeCheckout();
-    else if (cartEl.classList.contains("is-open")) closeCart();
+    if (cartEl.classList.contains("is-open")) closeCart();
     else if (nav.classList.contains("is-open")) nav.classList.remove("is-open");
   });
 
