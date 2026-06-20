@@ -206,8 +206,8 @@
     if (e.target.tagName === "A") nav.classList.remove("is-open");
   });
 
-  /* ---------- Checkout por WhatsApp ---------- */
-  function buildWhatsAppMessage() {
+  /* ---------- Checkout (formulario + WhatsApp + volver) ---------- */
+  function buildWhatsAppMessage(customer) {
     const lines = ["¡Hola RO! 🛍️ Quiero hacer este pedido:", ""];
     Object.entries(cart).forEach(([id, qty]) => {
       const p = getProduct(id);
@@ -217,26 +217,79 @@
     const subtotal = cartSubtotal();
     lines.push("");
     lines.push(`*Total: ${fmt(subtotal)}*`);
-    lines.push(subtotal >= FREE_SHIPPING ? "Incluye envío gratis 🎉" : "");
+    if (subtotal >= FREE_SHIPPING) lines.push("Incluye envío gratis 🎉");
+    lines.push("");
+    lines.push("*Mis datos:*");
+    lines.push(`Nombre: ${customer.name}`);
+    lines.push(`Correo: ${customer.email}`);
+    lines.push(`Teléfono: ${customer.phone}`);
+    lines.push(`Dirección: ${customer.address}`);
     lines.push("");
     lines.push("¿Me confirman disponibilidad y forma de pago? ¡Gracias!");
-    return lines.filter((l, i, a) => !(l === "" && a[i - 1] === "")).join("\n");
+    return lines.join("\n");
   }
 
-  checkoutBtn.addEventListener("click", () => {
-    if (cartCount() === 0) return;
+  const modal = document.getElementById("checkoutModal");
+  const checkoutForm = document.getElementById("checkoutForm");
+  const checkoutTotal = document.getElementById("checkoutTotal");
+  const formView = document.getElementById("checkoutFormView");
+  const successView = document.getElementById("checkoutSuccessView");
 
-    if (!WHATSAPP_NUMBER) {
-      showToast("⚠️ Falta configurar el número de WhatsApp (ver cart.js).");
-      return;
+  function openCheckout() {
+    if (cartCount() === 0) return;
+    checkoutTotal.textContent = fmt(cartSubtotal());
+    formView.hidden = false;
+    successView.hidden = true;
+    modal.hidden = false;
+    document.body.style.overflow = "hidden";
+  }
+  function closeCheckout() {
+    modal.hidden = true;
+    document.body.style.overflow = "";
+  }
+
+  checkoutBtn.addEventListener("click", () => { closeCart(); openCheckout(); });
+  document.getElementById("checkoutClose").addEventListener("click", closeCheckout);
+  modal.addEventListener("click", (e) => { if (e.target === modal) closeCheckout(); });
+
+  checkoutForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    if (!checkoutForm.checkValidity()) { checkoutForm.reportValidity(); return; }
+
+    const customer = {
+      name: checkoutForm.name.value.trim(),
+      email: checkoutForm.email.value.trim(),
+      phone: checkoutForm.phone.value.trim(),
+      address: checkoutForm.address.value.trim(),
+    };
+    const total = fmt(cartSubtotal());
+
+    // Enviar el pedido por WhatsApp (si hay número configurado)
+    if (WHATSAPP_NUMBER) {
+      const text = encodeURIComponent(buildWhatsAppMessage(customer));
+      window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${text}`, "_blank", "noopener");
     }
 
-    const text = encodeURIComponent(buildWhatsAppMessage());
-    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${text}`;
-    window.open(url, "_blank", "noopener");
+    // Vaciar carrito y mostrar la vista de éxito
+    cart = {};
+    saveCart();
+    updateUI();
+    checkoutForm.reset();
 
-    closeCart();
-    showToast("Te llevamos a WhatsApp para confirmar tu pedido 💬");
+    const firstName = customer.name.split(" ")[0] || "";
+    document.getElementById("successTitle").textContent = `¡Gracias${firstName ? ", " + firstName : ""}!`;
+    document.getElementById("successMsg").innerHTML =
+      `Tu pedido por <strong>${total}</strong> fue enviado. ` +
+      (WHATSAPP_NUMBER ? "Revisa WhatsApp para confirmarlo." : "Te contactaremos para confirmarlo.");
+    formView.hidden = true;
+    successView.hidden = false;
+  });
+
+  // "Seguir comprando": cierra y vuelve a la tienda
+  document.getElementById("successClose").addEventListener("click", () => {
+    closeCheckout();
+    document.getElementById("productos").scrollIntoView({ behavior: "smooth" });
+    showToast("¡Gracias por tu compra! 🛍️ Sigue explorando.");
   });
 
   /* ---------- Newsletter ---------- */
@@ -261,7 +314,8 @@
   /* ---------- Escape global ---------- */
   document.addEventListener("keydown", (e) => {
     if (e.key !== "Escape") return;
-    if (cartEl.classList.contains("is-open")) closeCart();
+    if (!modal.hidden) closeCheckout();
+    else if (cartEl.classList.contains("is-open")) closeCart();
     else if (nav.classList.contains("is-open")) nav.classList.remove("is-open");
   });
 
