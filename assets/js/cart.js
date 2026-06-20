@@ -285,10 +285,12 @@
     successView.hidden = false;
   });
 
-  // "Seguir comprando": cierra y vuelve a la tienda
+  // "Seguir comprando": cierra el modal y vuelve a la página principal
   document.getElementById("successClose").addEventListener("click", () => {
     closeCheckout();
-    document.getElementById("productos").scrollIntoView({ behavior: "smooth" });
+    formView.hidden = false;   // deja el modal listo para una próxima compra
+    successView.hidden = true;
+    window.scrollTo({ top: 0, behavior: "smooth" });
     showToast("¡Gracias por tu compra! 🛍️ Sigue explorando.");
   });
 
