@@ -1,0 +1,17 @@
+# Dependencias
+node_modules/
+
+# Vercel
+.vercel/
+
+# Variables de entorno y secretos (¡nunca subir tokens!)
+.env
+.env.*
+*.local
+
+# Sistema operativo / editores
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.log
