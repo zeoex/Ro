@@ -241,10 +241,12 @@
     formView.hidden = false;
     successView.hidden = true;
     modal.hidden = false;
+    modal.style.display = "grid";          // mostrar (gana sobre el CSS)
     document.body.style.overflow = "hidden";
   }
   function closeCheckout() {
     modal.hidden = true;
+    modal.style.display = "none";          // ocultar a la fuerza (estilo en línea)
     document.body.style.overflow = "";
   }
 
