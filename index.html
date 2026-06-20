@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="RO — Belleza importada multimarca. Skincare, fragancias y cuidado personal unisex. Productos 100% originales con envío a todo el país." />
+  <title>RO · Belleza importada unisex</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <!-- Barra de anuncio -->
+  <div class="announce">
+    Envío gratis en compras superiores a $150.000 · Productos 100% originales importados
+  </div>
+
+  <!-- Header -->
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <button class="icon-btn header__menu" id="menuToggle" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+
+      <a href="#inicio" class="logo" aria-label="RO inicio">RO<span>.</span></a>
+
+      <nav class="nav" id="nav" aria-label="Navegación principal">
+        <a href="#inicio">Inicio</a>
+        <a href="#productos">Tienda</a>
+        <a href="#marcas">Marcas</a>
+        <a href="#beneficios">Por qué RO</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+
+      <button class="icon-btn cart-toggle" id="cartToggle" aria-label="Abrir carrito">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/>
+          <path d="M2 2h3l2.4 12.4a2 2 0 0 0 2 1.6h8.2a2 2 0 0 0 2-1.6L23 6H6"/>
+        </svg>
+        <span class="cart-badge" id="cartBadge" hidden>0</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" id="inicio">
+    <div class="container hero__inner">
+      <div class="hero__content">
+        <p class="eyebrow">Multimarca · Unisex · Importado</p>
+        <h1>Tu ritual de belleza,<br><em>sin fronteras.</em></h1>
+        <p class="hero__lead">
+          Skincare, fragancias y cuidado personal de las mejores marcas del mundo.
+          Originales, seleccionados y pensados para todas las pieles.
+        </p>
+        <div class="hero__actions">
+          <a href="#productos" class="btn btn--primary">Comprar ahora</a>
+          <a href="#marcas" class="btn btn--ghost">Ver marcas</a>
+        </div>
+        <ul class="hero__trust">
+          <li>✓ 100% Originales</li>
+          <li>✓ Envío a todo el país</li>
+          <li>✓ Pago seguro</li>
+        </ul>
+      </div>
+      <div class="hero__visual" aria-hidden="true">
+        <div class="hero__blob"></div>
+        <div class="hero__card hero__card--1">Sérum Vitamina C</div>
+        <div class="hero__card hero__card--2">Eau de Parfum</div>
+        <div class="hero__card hero__card--3">SPF 50+</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Marcas -->
+  <section class="brands" id="marcas">
+    <div class="container">
+      <p class="brands__label">Marcas que amamos</p>
+      <div class="brands__track">
+        <span>The Ordinary</span><span>CeraVe</span><span>La Roche-Posay</span>
+        <span>Laneige</span><span>Kiehl's</span><span>Bioderma</span>
+        <span>Clinique</span><span>Innisfree</span><span>Dior</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Productos -->
+  <section class="shop" id="productos">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Nuestra selección</p>
+          <h2>Lo mejor en belleza importada</h2>
+        </div>
+      </div>
+
+      <div class="filters" id="filters" role="tablist" aria-label="Filtrar por categoría">
+        <button class="chip is-active" data-filter="todos" role="tab">Todos</button>
+        <button class="chip" data-filter="skincare" role="tab">Skincare</button>
+        <button class="chip" data-filter="fragancias" role="tab">Fragancias</button>
+        <button class="chip" data-filter="cabello" role="tab">Cabello &amp; Barba</button>
+        <button class="chip" data-filter="maquillaje" role="tab">Maquillaje</button>
+        <button class="chip" data-filter="cuerpo" role="tab">Cuerpo</button>
+      </div>
+
+      <div class="grid" id="productGrid">
+        <!-- Render por JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Beneficios -->
+  <section class="benefits" id="beneficios">
+    <div class="container benefits__grid">
+      <article class="benefit">
+        <span class="benefit__ico">🌍</span>
+        <h3>Importado y original</h3>
+        <p>Traemos cada producto desde su origen. Garantía de autenticidad en cada compra.</p>
+      </article>
+      <article class="benefit">
+        <span class="benefit__ico">🚚</span>
+        <h3>Envío rápido</h3>
+        <p>Despachamos en 24-48h a todo el país. Gratis desde $150.000.</p>
+      </article>
+      <article class="benefit">
+        <span class="benefit__ico">🔒</span>
+        <h3>Pago seguro</h3>
+        <p>Múltiples medios de pago con encriptación. Compra con total tranquilidad.</p>
+      </article>
+      <article class="benefit">
+        <span class="benefit__ico">💬</span>
+        <h3>Asesoría real</h3>
+        <p>¿No sabes qué elegir? Te ayudamos a armar tu rutina ideal.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="newsletter" id="contacto">
+    <div class="container newsletter__inner">
+      <div>
+        <h2>Sé el primero en saberlo</h2>
+        <p>Lanzamientos, restocks y ofertas exclusivas directo a tu correo.</p>
+      </div>
+      <form class="newsletter__form" id="newsletterForm" novalidate>
+        <label class="sr-only" for="emailInput">Correo electrónico</label>
+        <input type="email" id="emailInput" name="email" placeholder="tu@correo.com" required />
+        <button type="submit" class="btn btn--primary">Suscribirme</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div class="footer__brand">
+        <a href="#inicio" class="logo logo--light">RO<span>.</span></a>
+        <p>Belleza importada multimarca. Para todas las pieles, sin etiquetas.</p>
+      </div>
+      <div>
+        <h4>Tienda</h4>
+        <a href="#productos">Skincare</a>
+        <a href="#productos">Fragancias</a>
+        <a href="#productos">Cabello &amp; Barba</a>
+        <a href="#productos">Maquillaje</a>
+      </div>
+      <div>
+        <h4>Ayuda</h4>
+        <a href="#beneficios">Envíos</a>
+        <a href="#beneficios">Devoluciones</a>
+        <a href="#contacto">Contáctanos</a>
+        <a href="#beneficios">Preguntas frecuentes</a>
+      </div>
+      <div>
+        <h4>Síguenos</h4>
+        <a href="#">Instagram</a>
+        <a href="#">TikTok</a>
+        <a href="#">WhatsApp</a>
+      </div>
+    </div>
+    <div class="container footer__bottom">
+      <p>© 2026 RO. Todos los derechos reservados.</p>
+      <p>Hecho con 🤍 para la belleza sin fronteras.</p>
+    </div>
+  </footer>
+
+  <!-- Carrito (drawer) -->
+  <div class="cart-overlay" id="cartOverlay" hidden></div>
+  <aside class="cart" id="cart" aria-label="Carrito de compras" aria-hidden="true">
+    <div class="cart__head">
+      <h2>Tu carrito</h2>
+      <button class="icon-btn" id="cartClose" aria-label="Cerrar carrito">✕</button>
+    </div>
+    <div class="cart__body" id="cartBody">
+      <!-- Render por JS -->
+    </div>
+    <div class="cart__foot" id="cartFoot">
+      <div class="cart__row">
+        <span>Subtotal</span>
+        <strong id="cartSubtotal">$0</strong>
+      </div>
+      <p class="cart__note" id="shippingNote">Te faltan $150.000 para el envío gratis.</p>
+      <button class="btn btn--primary btn--block" id="checkoutBtn" disabled>Finalizar compra</button>
+    </div>
+  </aside>
+
+  <!-- Modal checkout -->
+  <div class="modal" id="checkoutModal" hidden>
+    <div class="modal__box" role="dialog" aria-modal="true" aria-labelledby="checkoutTitle">
+      <button class="icon-btn modal__close" id="checkoutClose" aria-label="Cerrar">✕</button>
+      <div id="checkoutContent">
+        <h2 id="checkoutTitle">Finalizar compra</h2>
+        <p class="modal__sub">Completa tus datos y te contactamos para confirmar el pedido.</p>
+        <form id="checkoutForm" novalidate>
+          <div class="field">
+            <label for="coName">Nombre completo</label>
+            <input id="coName" name="name" required />
+          </div>
+          <div class="field">
+            <label for="coEmail">Correo</label>
+            <input id="coEmail" name="email" type="email" required />
+          </div>
+          <div class="field">
+            <label for="coPhone">Teléfono / WhatsApp</label>
+            <input id="coPhone" name="phone" type="tel" required />
+          </div>
+          <div class="field">
+            <label for="coAddress">Dirección de envío</label>
+            <input id="coAddress" name="address" required />
+          </div>
+          <div class="modal__summary">
+            <span>Total a pagar</span>
+            <strong id="checkoutTotal">$0</strong>
+          </div>
+          <button type="submit" class="btn btn--primary btn--block">Confirmar pedido</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast" hidden></div>
+
+  <script src="assets/js/products.js"></script>
+  <script src="assets/js/cart.js"></script>
+</body>
+</html>
