@@ -5,7 +5,7 @@
    ============================================================ */
 
 const PRODUCTS = [
-  { id: "ro-led", brand: "Fototerapia", name: "Máscara LED Facial · 7 Colores", category: "dispositivos", price: 30000, tag: "Estrella ⭐", desc: "Luz LED para rejuvenecer, unificar el tono y combatir el acné desde casa.", image: "assets/img/mascara-led.jpg" },
+  { id: "ro-led", brand: "Fototerapia", name: "Máscara LED Facial · 7 Colores", category: "spa", price: 30000, tag: "Estrella ⭐", desc: "Luz LED para rejuvenecer, unificar el tono y combatir el acné desde casa.", image: "assets/img/mascara-led.jpg" },
 ];
 
 /* Corrige categoría con typo (defensa por si se edita a mano) */
