@@ -5,6 +5,7 @@
    ============================================================ */
 
 const PRODUCTS = [
+  { id: "ro-led", brand: "Fototerapia", name: "Máscara LED Facial · 7 Colores", category: "dispositivos", price: 30000, tag: "Estrella ⭐", desc: "Luz LED para rejuvenecer, unificar el tono y combatir el acné desde casa.", image: "assets/img/mascara-led.jpg" },
   { id: "ro-01", brand: "The Ordinary", name: "Sérum Vitamina C Suspension 23%", category: "skincare", price: 24900, tag: "Best seller", desc: "Ilumina y unifica el tono de la piel." },
   { id: "ro-02", brand: "CeraVe", name: "Crema Hidratante Facial", category: "skincare", price: 32500, tag: null, desc: "Hidratación 24h con ácido hialurónico." },
   { id: "ro-03", brand: "La Roche-Posay", name: "Anthelios Protector SPF 50+", category: "skincare", price: 45000, tag: "Top", desc: "Protección solar de alta resistencia." },
@@ -28,12 +29,22 @@ PRODUCTS.forEach(p => { if (p.category === "skincale") p.category = "skincare"; 
 
 /* Paleta de gradientes por categoría para las imágenes generadas */
 const CATEGORY_GRADIENT = {
-  skincare:   ["#dff0ec", "#a9d3c8"],
-  fragancias: ["#efe2d2", "#c8a36a"],
-  cabello:    ["#e6e2dc", "#9b8f7d"],
-  maquillaje: ["#f3dfe4", "#d99cae"],
-  cuerpo:     ["#eae4d6", "#cbb98e"],
+  skincare:     ["#dff0ec", "#a9d3c8"],
+  fragancias:   ["#efe2d2", "#c8a36a"],
+  cabello:      ["#e6e2dc", "#9b8f7d"],
+  maquillaje:   ["#f3dfe4", "#d99cae"],
+  cuerpo:       ["#eae4d6", "#cbb98e"],
+  dispositivos: ["#e9e4f2", "#b7a9d6"],
 };
+
+/* Devuelve la imagen del producto: foto real si tiene `image`,
+   o el placeholder SVG generado si no. */
+function productMedia(product) {
+  if (product.image) {
+    return `<img src="${product.image}" alt="${product.name}" loading="lazy" decoding="async" />`;
+  }
+  return productImageSVG(product);
+}
 
 /* Genera una imagen SVG elegante tipo "botella/frasco" como placeholder.
    Se ve premium sin necesidad de fotos externas. */
@@ -63,4 +74,5 @@ function productImageSVG(product) {
 const CATEGORY_LABEL = {
   skincare: "Skincare", fragancias: "Fragancias",
   cabello: "Cabello & Barba", maquillaje: "Maquillaje", cuerpo: "Cuerpo",
+  dispositivos: "Dispositivos",
 };

@@ -53,7 +53,7 @@
     grid.innerHTML = list.map((p) => `
       <article class="card" data-category="${p.category}">
         <div class="card__media">
-          ${productImageSVG(p)}
+          ${productMedia(p)}
           ${p.tag ? `<span class="card__tag">${p.tag}</span>` : ""}
         </div>
         <div class="card__body">
@@ -127,7 +127,7 @@
       const qty = cart[id];
       return `
         <div class="cart-item">
-          <div class="cart-item__media">${productImageSVG(p)}</div>
+          <div class="cart-item__media">${productMedia(p)}</div>
           <div class="cart-item__info">
             <span class="cart-item__brand">${p.brand}</span>
             <p class="cart-item__name">${p.name}</p>
