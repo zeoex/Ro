@@ -102,7 +102,8 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 600; line-height: 1.2; 
   display: flex; align-items: center; justify-content: space-between; gap: 1rem;
 }
 .logo {
-  font-family: var(--serif); font-size: 1.6rem; font-weight: 700; letter-spacing: .02em;
+  font-family: var(--serif); font-size: 1.2rem; font-weight: 700; letter-spacing: -.01em;
+  white-space: nowrap;
 }
 .logo span { color: var(--blue); }
 .logo--light { color: #fff; }
@@ -441,7 +442,7 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 600; line-height: 1.2; 
   :root { --header-h: 62px; }
   .container { width: 94%; }
   .announce { font-size: .68rem; letter-spacing: .04em; }
-  .logo { font-size: 1.5rem; }
+  .logo { font-size: 1.05rem; }
   .grid { grid-template-columns: 1fr 1fr; gap: .7rem; }
   .card__body { padding: .9rem .9rem 1.1rem; }
   .card__name { font-size: .92rem; }

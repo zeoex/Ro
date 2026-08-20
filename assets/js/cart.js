@@ -197,7 +197,7 @@
 
   /* ---------- Checkout (formulario + WhatsApp + volver) ---------- */
   function buildWhatsAppMessage(customer) {
-    const lines = ["¡Hola RO! 🛍️ Quiero hacer este pedido:", ""];
+    const lines = ["¡Hola! 🛍️ Quiero hacer este pedido:", ""];
     Object.entries(cart).forEach(([id, qty]) => {
       const p = getProduct(id);
       if (!p) return;
