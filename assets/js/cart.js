@@ -55,15 +55,9 @@
           ${productMedia(p)}
           ${p.tag ? `<span class="card__tag">${p.tag}</span>` : ""}
         </div>
-        <div class="card__body">
-          <span class="card__brand">${p.brand}</span>
-          <h3 class="card__name">${p.name}</h3>
-          <p class="card__desc">${p.desc}</p>
-          <div class="card__foot">
-            <span class="card__price">${fmt(p.price)}</span>
-            <button class="card__add" data-add="${p.id}" aria-label="Añadir ${p.name} al carrito">+</button>
-          </div>
-        </div>
+        <h3 class="card__name">${p.name}</h3>
+        <div class="card__price">${fmt(p.price)}</div>
+        <button class="btn-buy" data-add="${p.id}" aria-label="Comprar ${p.name}">Comprar</button>
       </article>
     `).join("");
   }
