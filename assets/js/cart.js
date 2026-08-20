@@ -218,6 +218,7 @@
     lines.push("");
     lines.push(`*Total: ${fmt(subtotal)}*`);
     if (subtotal >= FREE_SHIPPING) lines.push("Incluye envío gratis 🎉");
+    lines.push("💵 Pago: transferencia o efectivo retirando en tienda física.");
     lines.push("");
     lines.push("*Mis datos:*");
     lines.push(`Nombre: ${customer.name}`);
