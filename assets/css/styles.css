@@ -4,19 +4,19 @@
    ============================================================ */
 
 :root {
-  /* Paleta — tienda limpia en tonos lilas */
-  --cream: #ffffff;      /* fondo principal */
-  --cream-2: #f5f1fb;    /* secciones suaves (lila muy claro) */
-  --ink: #3a3340;        /* texto principal */
-  --ink-soft: #6a6172;   /* texto secundario */
-  --muted: #a49caf;      /* texto tenue */
-  --line: #ece7f3;       /* bordes */
-  --gold: #9575cd;       /* acento principal (botones lila) */
-  --gold-dark: #7e5bb5;  /* acento oscuro (hover) */
-  --blue: #8560bd;       /* detalles / badges / logo */
-  --green: #c3a9e8;      /* barra promo (lila) */
-  --green-ink: #3d2a5c;  /* texto sobre la barra */
-  --white: #ffffff;
+  /* Paleta — lila + lila pastel */
+  --cream: #faf7ff;      /* fondo principal (lila pastel muy suave) */
+  --cream-2: #f1e9fb;    /* secciones suaves (lila pastel) */
+  --ink: #443a52;        /* texto principal (gris lila) */
+  --ink-soft: #6f6580;   /* texto secundario */
+  --muted: #a99fb8;      /* texto tenue */
+  --line: #ebe3f6;       /* bordes lila claro */
+  --gold: #a385d6;       /* acento principal (botones lila) */
+  --gold-dark: #8a68c4;  /* acento oscuro (hover) */
+  --blue: #7c5fc0;       /* detalles / badges / logo */
+  --green: #d9c9f0;      /* barra promo (lila pastel) */
+  --green-ink: #4a3570;  /* texto sobre la barra */
+  --white: #ffffff;      /* tarjetas / header (blanco puro para contraste) */
 
   /* Tipografía */
   --serif: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
@@ -206,11 +206,11 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 600; line-height: 1.2; 
 
 /* ---------- Card de producto (estilo tienda) ---------- */
 .card {
-  background: var(--white); display: flex; flex-direction: column; gap: .5rem;
+  background: transparent; display: flex; flex-direction: column; gap: .5rem;
 }
 .card__media {
   aspect-ratio: 1; position: relative; display: grid; place-items: center;
-  border-radius: 8px; overflow: hidden; background: #f4f4f4;
+  border-radius: 8px; overflow: hidden; background: var(--cream-2);
 }
 .card__media svg { width: 100%; height: 100%; }
 .card__media img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s ease; }
