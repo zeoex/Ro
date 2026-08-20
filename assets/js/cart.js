@@ -188,6 +188,9 @@
   document.getElementById("menuToggle").addEventListener("click", () => {
     nav.classList.toggle("is-open");
   });
+  document.getElementById("navClose").addEventListener("click", () => {
+    nav.classList.remove("is-open");
+  });
   nav.addEventListener("click", (e) => {
     if (e.target.tagName === "A") nav.classList.remove("is-open");
   });
