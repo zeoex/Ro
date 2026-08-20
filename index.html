@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
-  <link rel="stylesheet" href="assets/css/styles.css?v=13" />
+  <link rel="stylesheet" href="assets/css/styles.css?v=14" />
 </head>
 <body>
   <!-- Barra de anuncio -->
@@ -24,13 +24,13 @@
         <span></span><span></span><span></span>
       </button>
 
-      <a href="#inicio" class="logo" aria-label="RO inicio">RO<span>.</span></a>
+      <a href="#productos" class="logo" aria-label="RO inicio">RO<span>.</span></a>
 
       <nav class="nav" id="nav" aria-label="Navegación principal">
-        <a href="#inicio">Inicio</a>
-        <a href="#productos">Tienda</a>
-        <a href="#marcas">Beneficios</a>
-        <a href="#beneficios">Por qué RO</a>
+        <a href="#productos">Inicio</a>
+        <a href="#productos">Productos</a>
+        <a href="#mascara-led">Beneficios</a>
+        <a href="#beneficios">Medios de pago</a>
         <a href="#contacto">Contacto</a>
       </nav>
 
@@ -44,50 +44,8 @@
     </div>
   </header>
 
-  <!-- Hero -->
-  <section class="hero" id="inicio">
-    <div class="container hero__inner">
-      <div class="hero__content">
-        <p class="eyebrow">Fototerapia · Unisex · Uso en casa</p>
-        <h1>Tu ritual de belleza,<br><em>sin fronteras.</em></h1>
-        <p class="hero__lead">
-          Máscara LED de 7 colores para rejuvenecer la piel, unificar el tono
-          y combatir el acné — desde la comodidad de tu casa. Apta para todo tipo de piel.
-        </p>
-        <div class="hero__actions">
-          <a href="#productos" class="btn btn--primary">Comprar ahora</a>
-          <a href="#mascara-led" class="btn btn--ghost">Ver beneficios</a>
-        </div>
-        <ul class="hero__trust">
-          <li>✓ 100% Originales</li>
-          <li>✓ Transferencia o efectivo</li>
-          <li>✓ Retiro en tienda física</li>
-        </ul>
-      </div>
-      <div class="hero__visual">
-        <div class="hero__blob" aria-hidden="true"></div>
-        <img class="hero__photo" src="assets/img/mascara-led.jpg"
-             alt="Máscara LED facial de fototerapia" width="1080" height="717" />
-        <div class="hero__card hero__card--1" aria-hidden="true">7 Colores de luz</div>
-        <div class="hero__card hero__card--2" aria-hidden="true">Fototerapia</div>
-        <div class="hero__card hero__card--3" aria-hidden="true">Uso en casa</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Marcas -->
-  <section class="brands" id="marcas">
-    <div class="container">
-      <p class="brands__label">Lo que hace la luz LED</p>
-      <div class="brands__track">
-        <span>Rejuvenece</span><span>Combate el acné</span><span>Unifica el tono</span>
-        <span>Reduce manchas</span><span>Estimula colágeno</span><span>Uso en casa</span>
-      </div>
-    </div>
-  </section>
-
   <!-- Productos -->
-  <section class="shop" id="productos">
+  <section class="shop" id="productos" style="padding-top: clamp(2rem, 5vw, 3.5rem);">
     <div class="container">
       <div class="section-head">
         <div>
@@ -179,7 +137,7 @@
   <footer class="footer">
     <div class="container footer__grid">
       <div class="footer__brand">
-        <a href="#inicio" class="logo logo--light">RO<span>.</span></a>
+        <a href="#productos" class="logo logo--light">RO<span>.</span></a>
         <p>Belleza importada multimarca. Para todas las pieles, sin etiquetas.</p>
       </div>
       <div>
@@ -291,7 +249,7 @@
   <!-- Toast -->
   <div class="toast" id="toast" hidden></div>
 
-  <script src="assets/js/products.js?v=13"></script>
-  <script src="assets/js/cart.js?v=13"></script>
+  <script src="assets/js/products.js?v=14"></script>
+  <script src="assets/js/cart.js?v=14"></script>
 </body>
 </html>

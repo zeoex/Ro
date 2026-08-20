@@ -4,18 +4,18 @@
    ============================================================ */
 
 :root {
-  /* Paleta — estilo tienda limpia (blanco / marrón / verde) */
+  /* Paleta — tienda limpia en tonos lilas */
   --cream: #ffffff;      /* fondo principal */
-  --cream-2: #f6f6f6;    /* secciones suaves */
-  --ink: #333333;        /* texto principal */
-  --ink-soft: #5c5c5c;   /* texto secundario */
-  --muted: #9b9b9b;      /* texto tenue */
-  --line: #e9e9e9;       /* bordes */
-  --gold: #5a4a42;       /* acento (botones marrón) */
-  --gold-dark: #443831;  /* acento oscuro */
-  --blue: #2b9be5;       /* detalles / badges / logo */
-  --green: #33c2a2;      /* barra promo */
-  --green-ink: #0b3b31;  /* texto sobre verde */
+  --cream-2: #f5f1fb;    /* secciones suaves (lila muy claro) */
+  --ink: #3a3340;        /* texto principal */
+  --ink-soft: #6a6172;   /* texto secundario */
+  --muted: #a49caf;      /* texto tenue */
+  --line: #ece7f3;       /* bordes */
+  --gold: #9575cd;       /* acento principal (botones lila) */
+  --gold-dark: #7e5bb5;  /* acento oscuro (hover) */
+  --blue: #8560bd;       /* detalles / badges / logo */
+  --green: #c3a9e8;      /* barra promo (lila) */
+  --green-ink: #3d2a5c;  /* texto sobre la barra */
   --white: #ffffff;
 
   /* Tipografía */
@@ -280,7 +280,7 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 600; line-height: 1.2; 
 .newsletter__form input:focus { outline: 2px solid var(--gold); outline-offset: 1px; }
 
 /* ---------- Footer ---------- */
-.footer { background: #14110e; color: rgba(247,243,238,.75); padding-top: 3.5rem; }
+.footer { background: #2a2333; color: rgba(255,255,255,.72); padding-top: 3.5rem; }
 .footer__grid {
   display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 2rem; padding-bottom: 2.5rem;
 }
