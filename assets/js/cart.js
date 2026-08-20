@@ -14,7 +14,7 @@
                 México    → "521XXXXXXXXXX"
      Déjalo vacío ("") y el botón solo avisará que falta configurarlo.
      ============================================================ */
-  const WHATSAPP_NUMBER = "5493624009892";
+  const WHATSAPP_NUMBER = "5493624032459";
 
   const STORE_KEY = "ro_cart_v1";
   const fmt = (n) => "$" + n.toLocaleString("es-CO");
