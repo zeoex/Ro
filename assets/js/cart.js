@@ -49,6 +49,11 @@
       ? PRODUCTS
       : PRODUCTS.filter((p) => p.category === filter);
 
+    if (list.length === 0) {
+      grid.innerHTML = `<p class="grid__empty">Pronto vas a encontrar productos en esta categoría. 🛍️</p>`;
+      return;
+    }
+
     grid.innerHTML = list.map((p) => `
       <article class="card" data-category="${p.category}">
         <div class="card__media">
@@ -64,12 +69,23 @@
 
   /* ---------- Filtros ---------- */
   const filters = document.getElementById("filters");
+
+  function applyFilter(filter) {
+    // sincroniza el chip activo si existe uno para esa categoría
+    let matched = false;
+    filters.querySelectorAll(".chip").forEach((c) => {
+      const on = c.dataset.filter === filter;
+      c.classList.toggle("is-active", on);
+      if (on) matched = true;
+    });
+    if (!matched) filters.querySelectorAll(".chip").forEach((c) => c.classList.remove("is-active"));
+    renderProducts(filter);
+  }
+
   filters.addEventListener("click", (e) => {
     const chip = e.target.closest(".chip");
     if (!chip) return;
-    filters.querySelectorAll(".chip").forEach((c) => c.classList.remove("is-active"));
-    chip.classList.add("is-active");
-    renderProducts(chip.dataset.filter);
+    applyFilter(chip.dataset.filter);
   });
 
   /* ---------- Añadir al carrito ---------- */
@@ -185,14 +201,41 @@
 
   /* ---------- Menú móvil ---------- */
   const nav = document.getElementById("nav");
+  const navSub = document.getElementById("navSub");
+
+  function closeMenu() {
+    nav.classList.remove("is-open");
+    navSub.classList.remove("is-open");
+  }
+
   document.getElementById("menuToggle").addEventListener("click", () => {
+    navSub.classList.remove("is-open");   // abrir siempre en la vista principal
     nav.classList.toggle("is-open");
   });
-  document.getElementById("navClose").addEventListener("click", () => {
-    nav.classList.remove("is-open");
+  document.getElementById("openProductos").addEventListener("click", () => {
+    if (window.matchMedia("(max-width: 820px)").matches) {
+      navSub.classList.add("is-open");    // móvil: abre el submenú
+    } else {
+      document.getElementById("productos").scrollIntoView({ behavior: "smooth" });
+    }
   });
+  document.getElementById("backProductos").addEventListener("click", () => {
+    navSub.classList.remove("is-open");
+  });
+  nav.querySelectorAll("[data-nav-close]").forEach((b) =>
+    b.addEventListener("click", closeMenu)
+  );
+  // categorías del submenú → filtran el catálogo
+  navSub.querySelectorAll("a[data-filter]").forEach((a) =>
+    a.addEventListener("click", () => {
+      applyFilter(a.dataset.filter);
+      closeMenu();
+    })
+  );
+  // cerrar al tocar un enlace del menú principal
   nav.addEventListener("click", (e) => {
-    if (e.target.tagName === "A") nav.classList.remove("is-open");
+    const a = e.target.closest("a");
+    if (a && !navSub.contains(a)) closeMenu();
   });
 
   /* ---------- Checkout (formulario + WhatsApp + volver) ---------- */
@@ -309,7 +352,8 @@
     if (e.key !== "Escape") return;
     if (!modal.hidden) closeCheckout();
     else if (cartEl.classList.contains("is-open")) closeCart();
-    else if (nav.classList.contains("is-open")) nav.classList.remove("is-open");
+    else if (navSub.classList.contains("is-open")) navSub.classList.remove("is-open");
+    else if (nav.classList.contains("is-open")) closeMenu();
   });
 
   /* ---------- Init ---------- */

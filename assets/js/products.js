@@ -59,4 +59,9 @@ const CATEGORY_LABEL = {
   skincare: "Skincare", fragancias: "Fragancias",
   cabello: "Cabello & Barba", maquillaje: "Maquillaje", cuerpo: "Cuerpo",
   dispositivos: "Dispositivos",
+  fitness: "Fitness", "home-deco": "Home & Deco", pets: "Mascotas",
+  spa: "Spa y Cuidado Personal", juguetes: "Juguetes",
+  lamparas: "Lámparas e Iluminación", tecnologia: "Tecnología",
+  bebes: "Accesorios para Bebés", "aire-libre": "Aire Libre",
+  moldes: "Moldes de Silicona", escolar: "Escolar",
 };

@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
-  <link rel="stylesheet" href="assets/css/styles.css?v=18" />
+  <link rel="stylesheet" href="assets/css/styles.css?v=19" />
 </head>
 <body>
   <!-- Barra de anuncio -->
@@ -29,13 +29,36 @@
       <nav class="nav" id="nav" aria-label="Navegación principal">
         <div class="nav__bar">
           <span class="nav__title">Menú</span>
-          <button class="nav__close" id="navClose" aria-label="Cerrar menú">✕</button>
+          <button class="nav__close" data-nav-close aria-label="Cerrar menú">✕</button>
         </div>
         <a href="#productos">Inicio</a>
-        <a href="#productos">Productos</a>
-        <a href="#mascara-led">Beneficios</a>
-        <a href="#beneficios">Medios de pago</a>
+        <button class="nav__parent" type="button" id="openProductos">Productos<span class="nav__arrow" aria-hidden="true">→</span></button>
         <a href="#contacto">Contacto</a>
+        <a href="#mascara-led" class="nav__more">Beneficios</a>
+        <a href="#beneficios" class="nav__more">Medios de pago</a>
+        <a href="#beneficios" class="nav__more">Cómo Comprar</a>
+
+        <!-- Submenú: Productos -->
+        <div class="nav__sub" id="navSub">
+          <div class="nav__bar">
+            <button class="nav__back" type="button" id="backProductos" aria-label="Volver">‹</button>
+            <span class="nav__title">Productos</span>
+            <button class="nav__close" data-nav-close aria-label="Cerrar menú">✕</button>
+          </div>
+          <a href="#productos" data-filter="todos">Ver todos los productos</a>
+          <a href="#productos" data-filter="dispositivos">Dispositivos</a>
+          <a href="#productos" data-filter="fitness">Fitness</a>
+          <a href="#productos" data-filter="home-deco">Home &amp; Deco</a>
+          <a href="#productos" data-filter="pets">Mascotas</a>
+          <a href="#productos" data-filter="spa">Spa y Cuidado Personal</a>
+          <a href="#productos" data-filter="juguetes">Juguetes</a>
+          <a href="#productos" data-filter="lamparas">Lámparas e Iluminación</a>
+          <a href="#productos" data-filter="tecnologia">Tecnología</a>
+          <a href="#productos" data-filter="bebes">Accesorios para Bebés</a>
+          <a href="#productos" data-filter="aire-libre">Aire Libre</a>
+          <a href="#productos" data-filter="moldes">Moldes de Silicona</a>
+          <a href="#productos" data-filter="escolar">Escolar</a>
+        </div>
       </nav>
 
       <button class="icon-btn cart-toggle" id="cartToggle" aria-label="Abrir carrito">
@@ -253,7 +276,7 @@
   <!-- Toast -->
   <div class="toast" id="toast" hidden></div>
 
-  <script src="assets/js/products.js?v=18"></script>
-  <script src="assets/js/cart.js?v=18"></script>
+  <script src="assets/js/products.js?v=19"></script>
+  <script src="assets/js/cart.js?v=19"></script>
 </body>
 </html>
