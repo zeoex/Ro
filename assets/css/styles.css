@@ -331,7 +331,6 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 600; line-height: 1.1; 
 .cart__row { display: flex; justify-content: space-between; align-items: center; margin-bottom: .4rem; }
 .cart__row strong { font-size: 1.3rem; }
 .cart__note { font-size: .78rem; color: var(--gold-dark); margin-bottom: 1rem; }
-.cart__note.is-free { color: #2e7d4f; }
 
 /* ---------- Modal ---------- */
 .modal {
