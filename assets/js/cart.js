@@ -16,7 +16,6 @@
      ============================================================ */
   const WHATSAPP_NUMBER = "5493624009892";
 
-  const FREE_SHIPPING = 150000;
   const STORE_KEY = "ro_cart_v1";
   const fmt = (n) => "$" + n.toLocaleString("es-CO");
 
@@ -164,16 +163,9 @@
 
     cartSubtotalEl.textContent = fmt(subtotal);
 
-    if (subtotal >= FREE_SHIPPING || subtotal === 0) {
-      shippingNote.textContent = subtotal === 0
-        ? "Agrega productos para comenzar."
-        : "🎉 ¡Tienes envío gratis!";
-      shippingNote.classList.toggle("is-free", subtotal >= FREE_SHIPPING && subtotal > 0);
-    } else {
-      const falta = FREE_SHIPPING - subtotal;
-      shippingNote.textContent = `Te faltan ${fmt(falta)} para el envío gratis.`;
-      shippingNote.classList.remove("is-free");
-    }
+    shippingNote.textContent = count === 0
+      ? "Agregá productos para comenzar."
+      : "Pago por transferencia o efectivo (retiro en tienda).";
     renderCart();
   }
 
@@ -217,7 +209,6 @@
     const subtotal = cartSubtotal();
     lines.push("");
     lines.push(`*Total: ${fmt(subtotal)}*`);
-    if (subtotal >= FREE_SHIPPING) lines.push("Incluye envío gratis 🎉");
     lines.push("💵 Pago: transferencia o efectivo retirando en tienda física.");
     lines.push("");
     lines.push("*Mis datos:*");
