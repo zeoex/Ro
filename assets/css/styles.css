@@ -224,6 +224,40 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 600; line-height: 1.2; 
 .card__media svg { width: 100%; height: 100%; }
 .card__media img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s ease; }
 .card:hover .card__media img { transform: scale(1.04); }
+.card__media[data-zoom] { cursor: zoom-in; }
+.card__zoom {
+  position: absolute; top: 10px; right: 10px; z-index: 2;
+  width: 32px; height: 32px; display: grid; place-items: center;
+  border-radius: 50%; background: rgba(26,23,20,.45); color: #fff;
+  font-size: 1rem; line-height: 1; opacity: 0; transition: opacity .25s ease;
+  pointer-events: none;
+}
+.card__media[data-zoom]:hover .card__zoom,
+.card__media[data-zoom]:focus-visible .card__zoom { opacity: 1; }
+@media (hover: none) { .card__zoom { opacity: .9; } }
+
+/* Visor de imagen a pantalla completa (sin recortar) */
+.img-zoom {
+  position: fixed; inset: 0; z-index: 1200;
+  display: flex; align-items: center; justify-content: center;
+  padding: 1.2rem; background: rgba(20,16,24,.92);
+  cursor: zoom-out; animation: zoomFade .2s ease;
+}
+.img-zoom[hidden] { display: none; }
+@keyframes zoomFade { from { opacity: 0; } to { opacity: 1; } }
+.img-zoom__fig { margin: 0; max-width: 100%; max-height: 100%; display: flex; flex-direction: column; align-items: center; gap: .7rem; }
+.img-zoom__fig img {
+  max-width: 100%; max-height: 85vh; width: auto; height: auto;
+  object-fit: contain; border-radius: 12px; box-shadow: 0 16px 50px rgba(0,0,0,.5);
+}
+.img-zoom__fig figcaption { color: #fff; font-size: .9rem; text-align: center; opacity: .9; }
+.img-zoom__close {
+  position: absolute; top: 1rem; right: 1rem; z-index: 2;
+  width: 44px; height: 44px; border: 0; border-radius: 50%;
+  background: rgba(255,255,255,.14); color: #fff; font-size: 1.3rem;
+  cursor: pointer; display: grid; place-items: center; transition: background .2s ease;
+}
+.img-zoom__close:hover { background: rgba(255,255,255,.28); }
 .card__tag {
   position: absolute; left: 10px; bottom: 10px; background: var(--blue); color: #fff;
   font-size: .68rem; font-weight: 600; letter-spacing: .02em;

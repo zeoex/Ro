@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
-  <link rel="stylesheet" href="assets/css/styles.css?v=28" />
+  <link rel="stylesheet" href="assets/css/styles.css?v=29" />
 </head>
 <body>
   <!-- Barra de anuncio -->
@@ -276,7 +276,16 @@
   <!-- Toast -->
   <div class="toast" id="toast" hidden></div>
 
-  <script src="assets/js/products.js?v=28"></script>
-  <script src="assets/js/cart.js?v=28"></script>
+  <!-- Visor de imagen (lightbox) -->
+  <div class="img-zoom" id="imgZoom" hidden>
+    <button class="img-zoom__close" data-zoom-close aria-label="Cerrar">✕</button>
+    <figure class="img-zoom__fig">
+      <img id="imgZoomPic" src="" alt="" />
+      <figcaption id="imgZoomCap"></figcaption>
+    </figure>
+  </div>
+
+  <script src="assets/js/products.js?v=29"></script>
+  <script src="assets/js/cart.js?v=29"></script>
 </body>
 </html>

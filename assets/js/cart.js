@@ -56,9 +56,10 @@
 
     grid.innerHTML = list.map((p) => `
       <article class="card" data-category="${p.category}">
-        <div class="card__media">
+        <div class="card__media"${p.image ? ` data-zoom="${p.image}" data-zoom-name="${p.name}" role="button" tabindex="0" aria-label="Ampliar imagen de ${p.name}"` : ""}>
           ${productMedia(p)}
           ${p.tag ? `<span class="card__tag">${p.tag}</span>` : ""}
+          ${p.image ? `<span class="card__zoom" aria-hidden="true">⤢</span>` : ""}
         </div>
         <h3 class="card__name">${p.name}</h3>
         ${p.desc ? `<p class="card__desc">${p.desc}</p>` : ""}
@@ -92,8 +93,14 @@
   /* ---------- Añadir al carrito ---------- */
   grid.addEventListener("click", (e) => {
     const btn = e.target.closest("[data-add]");
-    if (!btn) return;
-    addToCart(btn.dataset.add);
+    if (btn) { addToCart(btn.dataset.add); return; }
+    const media = e.target.closest("[data-zoom]");
+    if (media) openZoom(media.dataset.zoom, media.dataset.zoomName);
+  });
+  grid.addEventListener("keydown", (e) => {
+    if (e.key !== "Enter" && e.key !== " ") return;
+    const media = e.target.closest("[data-zoom]");
+    if (media) { e.preventDefault(); openZoom(media.dataset.zoom, media.dataset.zoomName); }
   });
 
   function addToCart(id) {
@@ -348,10 +355,37 @@
     toastTimer = setTimeout(() => { toastEl.hidden = true; }, 2400);
   }
 
+  /* ---------- Visor de imagen (lightbox) ---------- */
+  const zoomEl = document.getElementById("imgZoom");
+  const zoomImg = document.getElementById("imgZoomPic");
+  const zoomCap = document.getElementById("imgZoomCap");
+  function openZoom(src, name) {
+    if (!zoomEl) return;
+    zoomImg.src = src;
+    zoomImg.alt = name || "";
+    if (zoomCap) zoomCap.textContent = name || "";
+    zoomEl.hidden = false;
+    zoomEl.style.display = "flex";
+    document.body.style.overflow = "hidden";
+  }
+  function closeZoom() {
+    if (!zoomEl) return;
+    zoomEl.hidden = true;
+    zoomEl.style.display = "none";
+    zoomImg.src = "";
+    document.body.style.overflow = "";
+  }
+  if (zoomEl) {
+    zoomEl.addEventListener("click", (e) => {
+      if (e.target === zoomEl || e.target.closest("[data-zoom-close]")) closeZoom();
+    });
+  }
+
   /* ---------- Escape global ---------- */
   document.addEventListener("keydown", (e) => {
     if (e.key !== "Escape") return;
-    if (!modal.hidden) closeCheckout();
+    if (zoomEl && !zoomEl.hidden) closeZoom();
+    else if (!modal.hidden) closeCheckout();
     else if (cartEl.classList.contains("is-open")) closeCart();
     else if (navSub.classList.contains("is-open")) navSub.classList.remove("is-open");
     else if (nav.classList.contains("is-open")) closeMenu();
