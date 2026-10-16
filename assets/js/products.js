@@ -6,6 +6,8 @@
 
 const PRODUCTS = [
   { id: "ro-led", brand: "Fototerapia", name: "Máscara LED Facial · 7 Colores", category: "spa", price: 30000, tag: "Estrella ⭐", desc: "Luz LED para rejuvenecer, unificar el tono y combatir el acné desde casa.", image: "assets/img/mascara-led.jpg" },
+  { id: "spa-ems", brand: "", name: "Electrodos EMS", category: "spa", price: 0, tag: "Nuevo", desc: "Electroestimulador muscular EMS para tonificar y reafirmar abdomen, brazos y piernas desde casa. Beneficios: estimula y ejercita el músculo, ayuda a la tonificación y activa la circulación. Modo de uso: colocá el módulo sobre la almohadilla de gel y fijála firme en la zona a trabajar; encendé, elegí modo e intensidad y hacé sesiones de unos 20 minutos, 1-2 veces al día. Importante: no reemplaza el ejercicio ni la dieta; no usar con marcapasos, embarazo ni epilepsia.", image: "assets/img/electrodos-ems.jpg" },
+  { id: "spa-rizador", brand: "", name: "Rizador de pestañas térmico", category: "spa", price: 0, tag: "Nuevo", desc: "Arqueador/rizador de pestañas térmico. Beneficios: curva las pestañas con calor para un resultado más duradero y natural que el rizador tradicional, sin pellizcar. Modo de uso: encendé y esperá alrededor de 1 minuto a que caliente; apoyá en la raíz de la pestaña llevando hacia arriba y mantené 3 a 10 segundos; repetí con movimientos ascendentes. Mejor usarlo después de la máscara de pestañas y frente al espejo. En el primer uso, empezá por la temperatura más baja.", image: "assets/img/rizador-pestanas.jpg" },
 ];
 
 /* Corrige categoría con typo (defensa por si se edita a mano) */

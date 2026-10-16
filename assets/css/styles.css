@@ -234,6 +234,11 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 600; line-height: 1.2; 
   color: var(--ink); margin-top: .3rem;
 }
 .card__price { font-size: 1.15rem; font-weight: 700; color: var(--ink); }
+.card__desc {
+  font-size: .82rem; line-height: 1.5; color: var(--ink-soft);
+  display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical;
+  overflow: hidden; margin: .1rem 0 .1rem;
+}
 .btn-buy {
   align-self: flex-start; margin-top: .2rem;
   background: var(--gold); color: #fff; border: 0; border-radius: 8px;

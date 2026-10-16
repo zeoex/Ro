@@ -61,7 +61,8 @@
           ${p.tag ? `<span class="card__tag">${p.tag}</span>` : ""}
         </div>
         <h3 class="card__name">${p.name}</h3>
-        <div class="card__price">${fmt(p.price)}</div>
+        ${p.desc ? `<p class="card__desc">${p.desc}</p>` : ""}
+        <div class="card__price">${p.price ? fmt(p.price) : "Precio a consultar"}</div>
         <button class="btn-buy" data-add="${p.id}" aria-label="Comprar ${p.name}">Comprar</button>
       </article>
     `).join("");
